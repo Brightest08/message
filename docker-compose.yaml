@@ -2,7 +2,7 @@ version: "2.2"
 services:
   message:
     container_name: message
-    image: message
+    image: registry.cn-hongkong.aliyuncs.com/brightest/message
     environment:
       - es_user=message
       - es_passwd=message
@@ -15,7 +15,7 @@ services:
       - mysql
       - redis
   es:
-    image: elasticsearch:message
+    image: registry.cn-hongkong.aliyuncs.com/brightest/elasticsearch:message
     environment:
       - es_user=message
       - es_passwd=message
@@ -53,4 +53,4 @@ services:
       - TIMELION_ENABLED=true
       - I18N_LOCALE="zh-CN"
     ports:
-      - "5600:5601"
+      - "5601:5601"
