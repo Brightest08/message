@@ -1,0 +1,56 @@
+version: "2.2"
+services:
+  message:
+    container_name: message
+    image: message
+    environment:
+      - es_user=message
+      - es_passwd=message
+      - mysql_user=message
+      - mysql_passwd=message
+      - mysql_db=message
+    restart: on-failure
+    depends_on:
+      - es
+      - mysql
+      - redis
+  es:
+    image: elasticsearch:message
+    environment:
+      - es_user=message
+      - es_passwd=message
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - ./data/es:/usr/share/elasticsearch/data
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: message
+      MYSQL_PASSWORD: message
+      MYSQL_DATABASE: message
+    restart: on-failure
+    mem_limit: 500m
+    cpus: '0.5'
+    volumes:
+      - ./data/mysql/db:/var/lib/mysql
+      - ./data/mysql/init:/docker-entrypoint-initdb.d
+  redis:
+    image: redis
+    restart: on-failure
+    volumes:
+      - ./data/redis:/data
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.2.0
+    environment:
+      - ELASTICSEARCH_HOSTS=["http://es:9200"]
+      - ELASTICSEARCH_USERNAME=message
+      - ELASTICSEARCH_PASSWORD=message
+      - SERVER.HOST=0.0.0.0
+      - TIMELION_ENABLED=true
+      - I18N_LOCALE="zh-CN"
+    ports:
+      - "5600:5601"

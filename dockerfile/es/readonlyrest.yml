@@ -1,0 +1,5 @@
+readonlyrest:
+    access_control_rules:
+    - name: "Require HTTP Basic Auth"
+      type: allow
+      auth_key: message:message

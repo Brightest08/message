@@ -1,0 +1,2 @@
+#!/bin/sh
+docker exec -it message python message_main.py $@
