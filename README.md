@@ -33,7 +33,7 @@
   - source - 源代码存放位置
   
 - 流程图
-  -! [image](https://github.com/Brightest08/test/blob/master/process.png)
+  - ![image](https://github.com/Brightest08/test/blob/master/process.png)
 
 - 项目声明：
   - 本项目只供学习交流使用，务作为非法用途
