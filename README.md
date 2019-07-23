@@ -24,7 +24,7 @@
     ```
     - 登录kibana查看发送日志,登录需要用户认证,默认用户名密码为message,可以在docker-compose.yaml中进行修改
     
-      ![image](https://github.com/Brightest08/test/blob/master/kibana.png)
+      ![image](https://github.com/Brightest08/message/blob/master/source/kibana.png)
 	
 - 目录对应说明
   - bin - 短信发送脚本
@@ -33,7 +33,7 @@
   - source - 源代码存放位置
   
 - 流程图
-  - ![image](https://github.com/Brightest08/test/blob/master/process.png)
+  - ![image](https://github.com/Brightest08/message/blob/master/source/process.png)
 
 - 项目声明：
   - 本项目只供学习交流使用，务作为非法用途
